@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">My Smart Shopping List</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="Launcher_details">What do you want to do?</string>
+    <string name="list_management_activity">Manage your shopping list</string>
+    <string name="shopping_activity">Shopping</string>
+    <string name="overview_activity">Review you shopping habits</string>
+    <string name="title_activity_overview">Map</string>
 </resources>
