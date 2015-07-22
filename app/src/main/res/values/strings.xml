@@ -7,4 +7,5 @@
     <string name="shopping_activity">Shopping</string>
     <string name="overview_activity">Review you shopping habits</string>
     <string name="title_activity_overview">Map</string>
+    <string name="title_activity_list_management">Manage your List </string>
 </resources>

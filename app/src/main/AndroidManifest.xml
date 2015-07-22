@@ -39,6 +39,10 @@
             android:name=".OverviewActivity"
             android:label="@string/title_activity_overview" >
         </activity>
+        <activity
+            android:name=".ListManagementActivity"
+            android:label="@string/title_activity_list_management" >
+        </activity>
     </application>
 
 </manifest>
