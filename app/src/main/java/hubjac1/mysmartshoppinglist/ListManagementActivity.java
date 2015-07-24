@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+/**
+ * Activity class. Allow the user to prepare is shopping list.
+ */
 public class ListManagementActivity extends AppCompatActivity {
     private HorizontalListView mCategoriesList = null;
 
@@ -28,6 +30,13 @@ public class ListManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_management);
 
+        setupCategories();
+    }
+
+    /**
+     * Setup categories selection method
+     */
+    private void setupCategories() {
         mCategoriesList = (HorizontalListView) findViewById(R.id.categoriesList);
         CategoryArrayAdapter adapter = new CategoryArrayAdapter(this, mCategoryData);
         mCategoriesList.setAdapter(adapter);
@@ -52,7 +61,6 @@ public class ListManagementActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

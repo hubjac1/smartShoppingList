@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- *
+ * Present the different activity of the application at application startup.
  */
 public class LauncherActivity extends AppCompatActivity {
 

@@ -1,10 +1,5 @@
 package hubjac1.mysmartshoppinglist;
 
-/**
- * Created by huj on 2015/07/23.
- */
-
-
 /** This is just a simple class for holding data that is used to render our category view */
 public class CategoryData {
     private int mText;
@@ -12,8 +7,8 @@ public class CategoryData {
 
     /**
      * Constructor
-     * @param image
-     * @param resourceText
+     * @param image: image resource id
+     * @param resourceText: text resource id
      */
     public CategoryData(int image, int resourceText) {
         mImage = image;
