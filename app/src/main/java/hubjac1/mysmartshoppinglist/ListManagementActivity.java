@@ -1,6 +1,5 @@
 package hubjac1.mysmartshoppinglist;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -8,12 +7,32 @@ import android.view.MenuItem;
 
 
 public class ListManagementActivity extends AppCompatActivity {
+    private HorizontalListView mCategoriesList = null;
+
+    private CategoryData[] mCategoryData = new CategoryData[] {
+            new CategoryData(R.mipmap.baby, R.string.baby),
+            new CategoryData(R.mipmap.bakery, R.string.bakery),
+            new CategoryData(R.mipmap.chiller, R.string.chiller),
+            new CategoryData(R.mipmap.deli, R.string.deli),
+            new CategoryData(R.mipmap.frozen, R.string.frozen),
+            new CategoryData(R.mipmap.fruits, R.string.fruits),
+            new CategoryData(R.mipmap.grocery, R.string.grocery),
+            new CategoryData(R.mipmap.herbs, R.string.herbs),
+            new CategoryData(R.mipmap.household, R.string.household),
+            new CategoryData(R.mipmap.personal, R.string.personal),
+            new CategoryData(R.mipmap.vegetables, R.string.vegetables)
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_management);
+
+        mCategoriesList = (HorizontalListView) findViewById(R.id.categoriesList);
+        CategoryArrayAdapter adapter = new CategoryArrayAdapter(this, mCategoryData);
+        mCategoriesList.setAdapter(adapter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -8,4 +8,16 @@
     <string name="overview_activity">Review you shopping habits</string>
     <string name="title_activity_overview">Map</string>
     <string name="title_activity_list_management">Manage your List </string>
+    <string name="categories">Categories</string>
+    <string name="baby">Baby</string>
+    <string name="bakery">Bakery</string>
+    <string name="chiller">Chiller</string>
+    <string name="deli">Deli</string>
+    <string name="frozen">Frozen</string>
+    <string name="fruits">Fruits</string>
+    <string name="grocery">Grocery</string>
+    <string name="herbs">Herbs</string>
+    <string name="household">Household</string>
+    <string name="personal">Personal</string>
+    <string name="vegetables">vegetables</string>
 </resources>
