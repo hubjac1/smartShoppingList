@@ -20,4 +20,5 @@
     <string name="household">Household</string>
     <string name="personal">Personal</string>
     <string name="vegetables">vegetables</string>
+    <string name="products">Products</string>
 </resources>

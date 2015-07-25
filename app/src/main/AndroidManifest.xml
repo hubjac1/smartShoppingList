@@ -40,7 +40,7 @@
             android:label="@string/title_activity_overview" >
         </activity>
         <activity
-            android:name=".ListManagementActivity"
+            android:name=".listManagement.ListManagementActivity"
             android:label="@string/title_activity_list_management" >
         </activity>
     </application>
