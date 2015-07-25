@@ -2,6 +2,7 @@ package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -32,11 +33,6 @@ public class ListManagementActivity extends AppCompatActivity {
     private ProductData[] mProductData = new ProductData[] {
             new ProductData(R.mipmap.baby, R.string.baby),
             new ProductData(R.mipmap.bakery, R.string.bakery),
-            new ProductData(R.mipmap.chiller, R.string.chiller),
-            new ProductData(R.mipmap.baby, R.string.baby),
-            new ProductData(R.mipmap.bakery, R.string.bakery),
-            new ProductData(R.mipmap.baby, R.string.baby),
-            new ProductData(R.mipmap.bakery, R.string.bakery),
             new ProductData(R.mipmap.chiller, R.string.chiller)
     };
 
@@ -64,6 +60,7 @@ public class ListManagementActivity extends AppCompatActivity {
         mProductList = (ListView) findViewById(R.id.productList);
         ProductArrayAdapter adapter = new ProductArrayAdapter(this, mProductData);
         mProductList.setAdapter(adapter);
+        Log.e("app", "setup Product");
     }
 
 

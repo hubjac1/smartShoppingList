@@ -1,7 +1,9 @@
 package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -40,6 +42,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
             holder.textView = (TextView) convertView.findViewById(R.id.textViewProd);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageViewProd);
             holder.selectionProduct = (CheckBox)convertView.findViewById(R.id.selectionProduct);
+            holder.selectionProduct.setOnClickListener(new SelectionListener(getItem(position)));
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
@@ -47,7 +50,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         // Populate the text
         holder.textView.setText(getItem(position).getLabel());
         holder.imageView.setImageResource(getItem(position).getImage());
-        holder.selectionProduct.setEnabled(getItem(position).isSelected());
+        holder.selectionProduct.setSelected(getItem(position).isSelected());
 
         return convertView;
     }
@@ -59,5 +62,21 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         public TextView textView;
         public ImageView imageView;
         public CheckBox selectionProduct;
+    }
+
+    private static class SelectionListener implements View.OnClickListener {
+        private ProductData mProduct;
+
+        public SelectionListener(ProductData product) {
+            mProduct = product;
+        }
+
+        @Override
+        public void onClick(View v) {
+            CheckBox box = (CheckBox)v;
+            boolean status = box.isChecked();
+            box.setSelected(!status);
+            mProduct.setSelected(true);
+        }
     }
 }

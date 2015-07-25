@@ -4,7 +4,7 @@ package hubjac1.mysmartshoppinglist.listManagement;
 public class ProductData {
     private int mImage;
     private int mLabel;
-    private boolean selected = false;
+    private boolean mSelected = false;
 
     public ProductData(int image, int label) {
         mImage = image;
@@ -20,6 +20,10 @@ public class ProductData {
     }
 
     public boolean isSelected() {
-        return selected;
+        return mSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        mSelected = selected;
     }
 }
