@@ -21,4 +21,21 @@
     <string name="personal">Personal</string>
     <string name="vegetables">vegetables</string>
     <string name="products">Products</string>
+    <string name="Bath">Bath</string>
+    <string name="Bottles">Bottles</string>
+    <string name="Creams">Creams</string>
+    <string name="Food_and_Formula">Food and Formula</string>
+    <string name="Medicine">Medicine</string>
+    <string name="Nappies">Nappies</string>
+    <string name="Nappy_Wipes">Nappy Wipes</string>
+    <string name="Rolls">Rolls</string>
+    <string name="Bread_Loaf">Bread Loaf</string>
+    <string name="Bread_Stick">Bread Stick</string>
+    <string name="Cakes">Cakes</string>
+    <string name="Crumpets">Crumpets</string>
+    <string name="Hot_Dog_Rolls">Hot Dog Rolls</string>
+    <string name="Muffins">Muffins</string>
+    <string name="Pikelets">Pikelets</string>
+    <string name="Wraps">Wraps</string>
+
 </resources>

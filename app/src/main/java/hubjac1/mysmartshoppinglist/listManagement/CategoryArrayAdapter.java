@@ -1,27 +1,31 @@
 package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import hubjac1.mysmartshoppinglist.R;
 
 /** An array adapter that knows how to render views when given CategoryData classes */
 public class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {
     private LayoutInflater mInflater;
+    private Callback mCallback;
 
     /**
      * Constructor
      * @param context: calling context
      * @param values: Array of values to display
      */
-    public CategoryArrayAdapter(Context context, CategoryData[] values) {
+    public CategoryArrayAdapter(Context context, CategoryData[] values, Callback callback) {
         super(context, R.layout.category_view, values);
         mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mCallback = callback;
     }
 
     @Override
@@ -38,6 +42,7 @@ public class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {
             holder.textView = (TextView) convertView.findViewById(R.id.textView);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(holder);
+            holder.imageView.setOnClickListener(new SelectionListener(getItem(position).getId()));
         } else {
             holder = (Holder) convertView.getTag();
         }
@@ -52,5 +57,23 @@ public class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {
     private static class Holder {
         public TextView textView;
         public ImageView imageView;
+    }
+
+    private class SelectionListener implements View.OnClickListener {
+        private int mProductId;
+
+        SelectionListener(int productId) {
+            mProductId = productId;
+        }
+
+        @Override
+        public void onClick(View v) {
+            //Todo send product click notification
+            Log.v("app", "click on: " + mProductId);
+            mCallback.onCategorySelection(mProductId);
+        }
+    }
+    public interface Callback {
+        void onCategorySelection(int category);
     }
 }

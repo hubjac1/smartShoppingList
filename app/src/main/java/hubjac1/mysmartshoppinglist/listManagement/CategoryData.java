@@ -1,5 +1,6 @@
 package hubjac1.mysmartshoppinglist.listManagement;
 
+
 /** This is just a simple class for holding data that is used to render our category view */
 public class CategoryData {
     private int mText;
@@ -16,11 +17,19 @@ public class CategoryData {
     }
 
     /**
-     * @return the text
+     * @return the text ID in R class
      */
     public int getText() {
         return mText;
     }
+
+    /**
+     * @return Product ID
+     */
+    public int getId() {
+        return mText;
+    }
+
 
     /**
      * @return the image
@@ -28,4 +37,5 @@ public class CategoryData {
     public int getImage() {
         return mImage;
     }
+
 }

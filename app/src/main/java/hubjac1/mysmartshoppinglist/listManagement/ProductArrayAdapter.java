@@ -76,7 +76,8 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
             CheckBox box = (CheckBox)v;
             boolean status = box.isChecked();
             box.setSelected(!status);
-            mProduct.setSelected(true);
+            mProduct.setSelected(!status);
+            //Todo store product to caddy
         }
     }
 }
