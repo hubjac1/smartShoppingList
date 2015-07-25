@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import hubjac1.mysmartshoppinglist.common.HorizontalListView;
 import hubjac1.mysmartshoppinglist.R;
@@ -13,6 +14,7 @@ import hubjac1.mysmartshoppinglist.R;
  */
 public class ListManagementActivity extends AppCompatActivity {
     private HorizontalListView mCategoriesList = null;
+    private ListView mProductList = null;
 
     private CategoryData[] mCategoryData = new CategoryData[] {
             new CategoryData(R.mipmap.baby, R.string.baby),
@@ -27,6 +29,16 @@ public class ListManagementActivity extends AppCompatActivity {
             new CategoryData(R.mipmap.personal, R.string.personal),
             new CategoryData(R.mipmap.vegetables, R.string.vegetables)
     };
+    private ProductData[] mProductData = new ProductData[] {
+            new ProductData(R.mipmap.baby, R.string.baby),
+            new ProductData(R.mipmap.bakery, R.string.bakery),
+            new ProductData(R.mipmap.chiller, R.string.chiller),
+            new ProductData(R.mipmap.baby, R.string.baby),
+            new ProductData(R.mipmap.bakery, R.string.bakery),
+            new ProductData(R.mipmap.baby, R.string.baby),
+            new ProductData(R.mipmap.bakery, R.string.bakery),
+            new ProductData(R.mipmap.chiller, R.string.chiller)
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,7 @@ public class ListManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_management);
 
         setupCategories();
+        setupProducts();
     }
 
     /**
@@ -43,6 +56,14 @@ public class ListManagementActivity extends AppCompatActivity {
         mCategoriesList = (HorizontalListView) findViewById(R.id.categoriesList);
         CategoryArrayAdapter adapter = new CategoryArrayAdapter(this, mCategoryData);
         mCategoriesList.setAdapter(adapter);
+    }
+    /**
+     * Setup categories selection method
+     */
+    private void setupProducts() {
+        mProductList = (ListView) findViewById(R.id.productList);
+        ProductArrayAdapter adapter = new ProductArrayAdapter(this, mProductData);
+        mProductList.setAdapter(adapter);
     }
 
 

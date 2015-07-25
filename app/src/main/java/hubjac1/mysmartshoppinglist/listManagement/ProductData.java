@@ -4,5 +4,22 @@ package hubjac1.mysmartshoppinglist.listManagement;
 public class ProductData {
     private int mImage;
     private int mLabel;
+    private boolean selected = false;
 
+    public ProductData(int image, int label) {
+        mImage = image;
+        mLabel = label;
+    }
+
+    public int getImage() {
+        return mImage;
+    }
+
+    public int getLabel() {
+        return mLabel;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
 }
