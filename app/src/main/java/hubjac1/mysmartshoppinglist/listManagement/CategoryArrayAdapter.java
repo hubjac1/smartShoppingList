@@ -1,4 +1,4 @@
-package hubjac1.mysmartshoppinglist;
+package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import hubjac1.mysmartshoppinglist.R;
 
 /** An array adapter that knows how to render views when given CategoryData classes */
 public class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {

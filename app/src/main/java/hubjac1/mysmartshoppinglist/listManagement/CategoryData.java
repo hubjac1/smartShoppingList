@@ -1,4 +1,4 @@
-package hubjac1.mysmartshoppinglist;
+package hubjac1.mysmartshoppinglist.listManagement;
 
 /** This is just a simple class for holding data that is used to render our category view */
 public class CategoryData {

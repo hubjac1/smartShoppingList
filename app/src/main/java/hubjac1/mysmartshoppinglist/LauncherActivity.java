@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import hubjac1.mysmartshoppinglist.listManagement.ListManagementActivity;
+
 /**
  * Present the different activity of the application at application startup.
  */

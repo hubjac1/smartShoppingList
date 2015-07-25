@@ -1,9 +1,12 @@
-package hubjac1.mysmartshoppinglist;
+package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import hubjac1.mysmartshoppinglist.common.HorizontalListView;
+import hubjac1.mysmartshoppinglist.R;
 
 /**
  * Activity class. Allow the user to prepare is shopping list.

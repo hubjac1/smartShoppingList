@@ -1,4 +1,4 @@
-package hubjac1.mysmartshoppinglist;
+package hubjac1.mysmartshoppinglist.common;
 
 /*
  * The MIT License Copyright (c) 2011 Paul Soucy (paul@dev-smart.com)
@@ -56,6 +56,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
+import hubjac1.mysmartshoppinglist.R;
 
 // @formatter:off
 
