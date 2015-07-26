@@ -1,9 +1,7 @@
 package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,10 +9,11 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import hubjac1.mysmartshoppinglist.DAO.ProductModel;
 import hubjac1.mysmartshoppinglist.R;
 
 
-public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
+public class ProductArrayAdapter extends ArrayAdapter<ProductModel> {
     private LayoutInflater mInflater;
 
     /**
@@ -23,7 +22,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
      * @param context: calling context
      * @param values:  Array of values to display
      */
-    public ProductArrayAdapter(Context context, ProductData[] values) {
+    public ProductArrayAdapter(Context context, ProductModel[] values) {
         super(context, R.layout.product_view, values);
         mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -48,7 +47,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
             holder = (Holder) convertView.getTag();
         }
         // Populate the text
-        holder.textView.setText(getItem(position).getLabel());
+        holder.textView.setText(getItem(position).getText());
         holder.imageView.setImageResource(getItem(position).getImage());
         holder.selectionProduct.setSelected(getItem(position).isSelected());
 
@@ -65,9 +64,9 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
     }
 
     private static class SelectionListener implements View.OnClickListener {
-        private ProductData mProduct;
+        private ProductModel mProduct;
 
-        public SelectionListener(ProductData product) {
+        public SelectionListener(ProductModel product) {
             mProduct = product;
         }
 
@@ -75,8 +74,8 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         public void onClick(View v) {
             CheckBox box = (CheckBox)v;
             boolean status = box.isChecked();
-            box.setSelected(!status);
-            mProduct.setSelected(!status);
+            //box.setSelected(!status);
+            mProduct.setSelected(status);
             //Todo store product to caddy
         }
     }

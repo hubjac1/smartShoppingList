@@ -2,7 +2,6 @@ package hubjac1.mysmartshoppinglist.listManagement;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -51,8 +50,8 @@ public class ListManagementActivity extends AppCompatActivity {
         CategoryArrayAdapter adapter = new CategoryArrayAdapter(this, mCategoryData,
                 new CategoryArrayAdapter.Callback() {
                     public void onCategorySelection(int category) {
-                        ArrayList<ProductModel> products = ProductDao.getProducts(category);
-                        ProductData[] productsData = ProductData.buildArrayFromModels(products);
+                        ArrayList<hubjac1.mysmartshoppinglist.DAO.ProductModel> products = ProductDao.getProducts(category);
+                        ProductModel[] productsData = products.toArray(new ProductModel[]{});
                         setupProducts(productsData);
                     }
                 });
@@ -61,9 +60,9 @@ public class ListManagementActivity extends AppCompatActivity {
     /**
      * Setup categories selection method
      */
-    private void setupProducts(ProductData [] productData) {
+    private void setupProducts(ProductModel[] productModel) {
         mProductList = (ListView) findViewById(R.id.productList);
-        ProductArrayAdapter adapter = new ProductArrayAdapter(this, productData);
+        ProductArrayAdapter adapter = new ProductArrayAdapter(this, productModel);
         mProductList.setAdapter(adapter);
     }
 

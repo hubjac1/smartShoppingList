@@ -1,22 +1,33 @@
 package hubjac1.mysmartshoppinglist;
 
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class OverviewActivity extends FragmentActivity {
+public class OverviewActivity extends FragmentActivity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private GoogleApiClient mClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
+
+        buildGoogleApiClient();
+
         setUpMapIfNeeded();
+
     }
 
     @Override
@@ -60,6 +71,53 @@ public class OverviewActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
+        Location lastLocation = mMap.getMyLocation();
+        double lat = lastLocation.getLatitude();
+        double lng = lastLocation.getLongitude();
+        Log.v("app", "lat " + lat);
+        Log.v("app", "lon " + lng);
+        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Marker"));
+    }
+
+
+    protected synchronized void buildGoogleApiClient() {
+        Log.e("app", "call");
+        mClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        Log.e("app", "onConnected");
+        Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(mClient);
+        double lat = lastLocation.getLatitude();
+        double lng = lastLocation.getLongitude();
+        Log.v("app", "lat " + lat);
+        Log.v("app", "lon " + lng);
+        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Marker"));
+        lastLocation = mMap.getMyLocation();
+        lat = lastLocation.getLatitude();
+        lng = lastLocation.getLongitude();
+        Log.v("app", "lat " + lat);
+        Log.v("app", "lon " + lng);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.e("app", "onConnectionSuspended");
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e("app", "onConnectionFailed" + connectionResult.describeContents());
+
     }
 }
