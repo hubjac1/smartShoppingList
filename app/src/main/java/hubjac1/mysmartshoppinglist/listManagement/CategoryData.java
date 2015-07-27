@@ -2,7 +2,7 @@ package hubjac1.mysmartshoppinglist.listManagement;
 
 
 /** This is just a simple class for holding data that is used to render our category view */
-class CategoryData {
+public class CategoryData {
     private int mText;
     private int mImage;
 
