@@ -1,13 +1,7 @@
 package hubjac1.mysmartshoppinglist.DAO;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import hubjac1.mysmartshoppinglist.R;
 
 /**
  * DAO class to access caddy model from storage
@@ -44,5 +38,13 @@ public class CaddyDao {
     public static Set<Integer> getProductsId(){
         return product;
 
+    }
+
+    /**
+     * get table of product in the Caddy
+     * @return ProductModel []
+     */
+    public static ProductModel [] getProducts(){
+        return ProductDao.getProducts(product).toArray(new ProductModel []{});
     }
 }

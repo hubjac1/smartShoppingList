@@ -13,7 +13,7 @@ import hubjac1.mysmartshoppinglist.DAO.ProductModel;
 import hubjac1.mysmartshoppinglist.R;
 
 
-class ProductArrayAdapter extends ArrayAdapter<ProductModel> {
+public class ProductArrayAdapter extends ArrayAdapter<ProductModel> {
     private LayoutInflater mInflater;
 
     /**

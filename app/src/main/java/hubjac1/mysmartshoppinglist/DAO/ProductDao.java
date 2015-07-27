@@ -39,10 +39,10 @@ public class ProductDao {
 
     /**
      * Get products in a given category
-     * @param category: int
+     * @param category : int
      * @return ArrayList<ProductModel>
      */
-    static public ArrayList<ProductModel> getProducts(int category)
+    static public ArrayList<ProductModel> getProductsInCategory(int category)
     {
         ArrayList<ProductModel> products;
         if (category == R.string.baby){
@@ -59,17 +59,36 @@ public class ProductDao {
     }
 
     /**
+     * Get products in a given list
+     * @param idList : Set<Integer>
+     * @return ArrayList<ProductModel>
+     */
+    static public ArrayList<ProductModel> getProducts( Set<Integer> idList)
+    {
+        ArrayList<ProductModel> allProducts = new ArrayList<ProductModel>(){};
+        ArrayList<ProductModel> caddy = new ArrayList<ProductModel>(){};
+        Set<Integer> categories = CategoryDao.getCategoriesId();
+        for (int category : categories){
+            allProducts.addAll(getProductsInCategory(category));
+        }
+        for(ProductModel product : allProducts){
+            if(idList.contains(product.getId()))
+                caddy.add(product);
+        }
+        return caddy;
+    }
+
+    /**
      * Set product status to true for priduct in the caddy.
      * @param modelArray: ArrayList<ProductModel>
      */
-    public static void setProductStatus(ArrayList<ProductModel> modelArray) {
+    private static void setProductStatus(ArrayList<ProductModel> modelArray) {
         Set<Integer> selectedProduct = CaddyDao.getProductsId();
 
         for (ProductModel model : modelArray) {
             if (selectedProduct.contains(model.getId())){
                 model.setSelected(true);
             }
-
         }
     }
 }

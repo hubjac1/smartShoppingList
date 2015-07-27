@@ -43,6 +43,10 @@
             android:name=".listManagement.ListManagementActivity"
             android:label="@string/title_activity_list_management" >
         </activity>
+        <activity
+            android:name=".ShoppingActivity"
+            android:label="@string/title_ShoppingActivity" >
+        </activity>
     </application>
 
 </manifest>

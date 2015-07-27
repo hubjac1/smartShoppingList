@@ -37,5 +37,6 @@
     <string name="Muffins">Muffins</string>
     <string name="Pikelets">Pikelets</string>
     <string name="Wraps">Wraps</string>
+    <string name="title_ShoppingActivity">Do you shopping</string>
 
 </resources>

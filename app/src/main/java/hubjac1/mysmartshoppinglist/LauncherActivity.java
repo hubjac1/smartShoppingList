@@ -17,6 +17,7 @@ public class LauncherActivity extends AppCompatActivity {
 
     private Button mOverviewBtn = null;
     private Button mListManagementBtn = null;
+    private Button mShoppingBtn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,10 @@ public class LauncherActivity extends AppCompatActivity {
         //Connect list management activity
         mListManagementBtn = (Button) findViewById(R.id.List_Management_btn);
         mListManagementBtn.setOnClickListener(launchListManagementActivity);
+
+        //Connect shopping activity
+        mShoppingBtn = (Button) findViewById(R.id.Shopping_btn);
+        mShoppingBtn.setOnClickListener(launchShoppingActivity);
 
 
     }
@@ -73,6 +78,15 @@ public class LauncherActivity extends AppCompatActivity {
             //Start activity
             Intent listManagementLauncher = new Intent(LauncherActivity.this, ListManagementActivity.class);
             startActivity(listManagementLauncher);
+        }
+    };
+    // Listener to start shopping activity
+    private View.OnClickListener launchShoppingActivity = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Start activity
+            Intent shoppingLauncher = new Intent(LauncherActivity.this, ShoppingActivity.class);
+            startActivity(shoppingLauncher);
         }
     };
 }

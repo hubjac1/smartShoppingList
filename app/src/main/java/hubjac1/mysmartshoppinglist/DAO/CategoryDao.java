@@ -1,5 +1,12 @@
 package hubjac1.mysmartshoppinglist.DAO;
 
+import android.support.annotation.NonNull;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import hubjac1.mysmartshoppinglist.R;
 import hubjac1.mysmartshoppinglist.listManagement.CategoryData;
 
@@ -23,5 +30,12 @@ public class CategoryDao {
 
     public static  CategoryData[] getCategory(){
         return mCategoryData.clone();
+    }
+    public static Set<Integer> getCategoriesId(){
+        Set<Integer> categoriesId  = new HashSet<Integer>();
+        for(CategoryData categoryData : mCategoryData) {
+            categoriesId.add(categoryData.getId());
+        }
+        return categoriesId;
     }
 }
