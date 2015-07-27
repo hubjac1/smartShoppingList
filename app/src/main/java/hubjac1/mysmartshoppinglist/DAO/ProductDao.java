@@ -4,6 +4,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import hubjac1.mysmartshoppinglist.R;
 
@@ -34,16 +37,39 @@ public class ProductDao {
             new ProductModel(R.string.Wraps, R.mipmap.wraps)
     }));
 
+    /**
+     * Get products in a given category
+     * @param category: int
+     * @return ArrayList<ProductModel>
+     */
     static public ArrayList<ProductModel> getProducts(int category)
     {
+        ArrayList<ProductModel> products;
         if (category == R.string.baby){
-            return mBabyProducts;
+            products = mBabyProducts;
         }
         else if (category == R.string.bakery) {
-            return mBakeryProducts;
+            products = mBakeryProducts;
         }
         else {
-            return new ArrayList<>();
+            products = new ArrayList<>();
+        }
+        setProductStatus(products);
+        return products;
+    }
+
+    /**
+     * Set product status to true for priduct in the caddy.
+     * @param modelArray: ArrayList<ProductModel>
+     */
+    public static void setProductStatus(ArrayList<ProductModel> modelArray) {
+        Set<Integer> selectedProduct = CaddyDao.getProductsId();
+
+        for (ProductModel model : modelArray) {
+            if (selectedProduct.contains(model.getId())){
+                model.setSelected(true);
+            }
+
         }
     }
 }

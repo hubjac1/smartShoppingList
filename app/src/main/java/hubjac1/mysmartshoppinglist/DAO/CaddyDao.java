@@ -41,8 +41,8 @@ public class CaddyDao {
      * Get list of product in the caddy
      * @return list of product
      */
-    public static Integer [] getProducts(){
-        return product.toArray(new Integer[]{});
+    public static Set<Integer> getProductsId(){
+        return product;
 
     }
 }
