@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import hubjac1.mysmartshoppinglist.DAO.CaddyDao;
 import hubjac1.mysmartshoppinglist.DAO.ProductDao;
 import hubjac1.mysmartshoppinglist.DAO.ProductModel;
 import hubjac1.mysmartshoppinglist.common.HorizontalListView;
@@ -52,14 +53,14 @@ public class ListManagementActivity extends AppCompatActivity {
                 new CategoryArrayAdapter.Callback() {
                     public void onCategorySelection(int category) {
                         ArrayList<ProductModel> products = ProductDao.getProducts(category);
-                        ProductData[] productsData = ProductData.buildArrayFromModels(products);
+                        ProductData[] productsData = ProductData.buildArrayFromModels(products, CaddyDao.getProducts());
                         setupProducts(productsData);
                     }
                 });
         mCategoriesList.setAdapter(adapter);
     }
     /**
-     * Setup categories selection method
+     * Setup Product selection method
      */
     private void setupProducts(ProductData [] productData) {
         mProductList = (ListView) findViewById(R.id.productList);

@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:background="@android:color/holo_green_light"/>
     <TextView
-        android:id="@+id/ExplainLauncher"
+        android:id="@+id/ExplainProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/products"/>

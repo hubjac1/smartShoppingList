@@ -5,7 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 
 /**
- * Created by huj on 2015/07/24.
+ * Functional test class for Launcher activity.
  */
 public class LauncherActivityTest extends ActivityInstrumentationTestCase2<LauncherActivity> {
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import hubjac1.mysmartshoppinglist.R;
 
 
-public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
+class ProductArrayAdapter extends ArrayAdapter<ProductData> {
     private LayoutInflater mInflater;
 
     /**
@@ -50,7 +50,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         // Populate the text
         holder.textView.setText(getItem(position).getLabel());
         holder.imageView.setImageResource(getItem(position).getImage());
-        holder.selectionProduct.setSelected(getItem(position).isSelected());
+        holder.setSelectionProduct(getItem(position).isSelected());
 
         return convertView;
     }
@@ -62,12 +62,29 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         public TextView textView;
         public ImageView imageView;
         public CheckBox selectionProduct;
+
+        /**
+         * Checked text box in an other thread.
+         * @param value: boolean
+         */
+        public void setSelectionProduct(final boolean value) {
+            final CheckBox cb = selectionProduct;
+            cb.post(new Runnable() {
+                @Override
+                public void run() {
+                    cb.setChecked(value);
+                }
+            });
+        }
     }
 
+    /**
+     * On Click listener for selected/unselected product
+     */
     private static class SelectionListener implements View.OnClickListener {
         private ProductData mProduct;
 
-        public SelectionListener(ProductData product) {
+        public SelectionListener(ProductData product){
             mProduct = product;
         }
 
@@ -75,9 +92,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductData> {
         public void onClick(View v) {
             CheckBox box = (CheckBox)v;
             boolean status = box.isChecked();
-            box.setSelected(!status);
-            mProduct.setSelected(!status);
-            //Todo store product to caddy
+            mProduct.setSelected(status);
         }
     }
 }

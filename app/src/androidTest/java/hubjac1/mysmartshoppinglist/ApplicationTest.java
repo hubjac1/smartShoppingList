@@ -18,6 +18,6 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     public void testTrial() {
         Application app = getApplication();
         // Todo: implement test case
-        //assertEquals(true, false);
+        assertEquals(true, false);
     }
 }

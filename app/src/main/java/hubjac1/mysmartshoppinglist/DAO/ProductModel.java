@@ -1,7 +1,7 @@
 package hubjac1.mysmartshoppinglist.DAO;
 
 /**
- *
+ * Data model of stored product
  */
 public class ProductModel {
     private int mText;
@@ -17,6 +17,10 @@ public class ProductModel {
     }
 
     public int getText() {
+        return mText;
+    }
+
+    public int getId() {
         return mText;
     }
 }

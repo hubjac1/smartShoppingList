@@ -13,7 +13,7 @@ import android.widget.Toast;
 import hubjac1.mysmartshoppinglist.R;
 
 /** An array adapter that knows how to render views when given CategoryData classes */
-public class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {
+ class CategoryArrayAdapter extends ArrayAdapter<CategoryData> {
     private LayoutInflater mInflater;
     private Callback mCallback;
 
