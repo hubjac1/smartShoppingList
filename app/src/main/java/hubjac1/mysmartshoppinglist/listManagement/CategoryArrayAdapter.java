@@ -42,13 +42,13 @@ import hubjac1.mysmartshoppinglist.R;
             holder.textView = (TextView) convertView.findViewById(R.id.textView);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
             convertView.setTag(holder);
-            holder.imageView.setOnClickListener(new SelectionListener(getItem(position).getId()));
         } else {
             holder = (Holder) convertView.getTag();
         }
         // Populate the text
         holder.textView.setText(getItem(position).getText());
         holder.imageView.setImageResource(getItem(position).getImage());
+        holder.imageView.setOnClickListener(new SelectionListener(getItem(position).getId()));
 
         return convertView;
     }

@@ -41,7 +41,6 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductModel> {
             holder.textView = (TextView) convertView.findViewById(R.id.textViewProd);
             holder.imageView = (ImageView) convertView.findViewById(R.id.imageViewProd);
             holder.selectionProduct = (CheckBox)convertView.findViewById(R.id.selectionProduct);
-            holder.selectionProduct.setOnClickListener(new SelectionListener(getItem(position)));
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
@@ -49,6 +48,7 @@ public class ProductArrayAdapter extends ArrayAdapter<ProductModel> {
         // Populate the text
         holder.textView.setText(getItem(position).getText());
         holder.imageView.setImageResource(getItem(position).getImage());
+        holder.selectionProduct.setOnClickListener(new SelectionListener(getItem(position)));
         holder.setSelectionProduct(getItem(position).isSelected());
 
         return convertView;
