@@ -1,11 +1,9 @@
 package hubjac1.mysmartshoppinglist.DAO;
 
-import android.util.Log;
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 import hubjac1.mysmartshoppinglist.R;
@@ -37,12 +35,16 @@ public class ProductDao {
             new ProductModel(R.string.Wraps, R.mipmap.wraps)
     }));
 
+    public ProductDao(Context context) {
+
+    }
+
     /**
      * Get products in a given category
      * @param category : int
      * @return ArrayList<ProductModel>
      */
-    static public ArrayList<ProductModel> getProductsInCategory(int category)
+    public ArrayList<ProductModel> getProductsInCategory(int category)
     {
         ArrayList<ProductModel> products;
         if (category == R.string.baby){
@@ -54,7 +56,6 @@ public class ProductDao {
         else {
             products = new ArrayList<>();
         }
-        setProductStatus(products);
         return products;
     }
 
@@ -63,7 +64,7 @@ public class ProductDao {
      * @param idList : Set<Integer>
      * @return ArrayList<ProductModel>
      */
-    static public ArrayList<ProductModel> getProducts( Set<Integer> idList)
+    public ArrayList<ProductModel> getProducts( Set<Integer> idList)
     {
         ArrayList<ProductModel> allProducts = new ArrayList<ProductModel>(){};
         ArrayList<ProductModel> caddy = new ArrayList<ProductModel>(){};
@@ -82,8 +83,8 @@ public class ProductDao {
      * Set product status to true for priduct in the caddy.
      * @param modelArray: ArrayList<ProductModel>
      */
-    private static void setProductStatus(ArrayList<ProductModel> modelArray) {
-        Set<Integer> selectedProduct = CaddyDao.getProductsId();
+    private void setProductStatus(ArrayList<ProductModel> modelArray, CaddyDao caddyDao) {
+        Set<Integer> selectedProduct = caddyDao.getProductsId();
 
         for (ProductModel model : modelArray) {
             if (selectedProduct.contains(model.getId())){

@@ -9,6 +9,11 @@ public class ProductModel {
     private int mId;
     private boolean mStatus;
 
+    private static CaddyDao mCaddyDao = new CaddyDao(null);
+    public static void setCaddyDao (CaddyDao caddyDao){
+        mCaddyDao =  caddyDao;
+    }
+
     ProductModel(int text, int image){
         mText = text;
         mImage = image;
@@ -42,6 +47,6 @@ public class ProductModel {
 
     public void setSelected(boolean selected) {
         mStatus = selected;
-        CaddyDao.update(mId, selected);
+        mCaddyDao.update(mId, selected);
     }
 }

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import hubjac1.mysmartshoppinglist.DAO.CaddyDao;
+import hubjac1.mysmartshoppinglist.DAO.ProductDao;
 import hubjac1.mysmartshoppinglist.DAO.ProductModel;
 import hubjac1.mysmartshoppinglist.listManagement.ProductArrayAdapter;
 
@@ -16,10 +17,16 @@ import hubjac1.mysmartshoppinglist.listManagement.ProductArrayAdapter;
 public class ShoppingActivity extends AppCompatActivity {
 
     private ListView mProductList = null;
+    private CaddyDao mCaddyDao = null;
+    private ProductDao mProductDao = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mCaddyDao = new CaddyDao(this);
+        mCaddyDao.open();
+        mProductDao = new ProductDao(this);
+        ProductModel.setCaddyDao(mCaddyDao);
         setContentView(R.layout.activity_shopping);
 
         setupProductsList();
@@ -30,7 +37,7 @@ public class ShoppingActivity extends AppCompatActivity {
      */
     private void setupProductsList() {
         mProductList = (ListView) findViewById(R.id.productList);
-        ProductModel [] productList = CaddyDao.getProducts();
+        ProductModel [] productList = mCaddyDao.getProducts(mProductDao);
         ProductArrayAdapter adapter = new ProductArrayAdapter(this, productList);
         mProductList.setAdapter(adapter);
     }
